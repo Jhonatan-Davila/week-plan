@@ -1,0 +1,22 @@
+.plan-filter {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  padding: 10px;
+  font-size: 15px;
+  .btn-appoint {
+    margin-left: 20px;
+  }
+  &-option {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    margin-left: 20px;
+    &-item {
+      margin-left: 20px;
+      &:not(:nth-child(2)) {
+        width: 150px;
+      }
+    }
+  }
+}

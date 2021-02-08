@@ -1,0 +1,25 @@
+.side-bar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  .toggle-menu {
+    height: 50px;
+    width: 50px;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    top: 0;
+    position: absolute;
+    outline: none;
+    z-index: 1;
+    background-color: rgba(64, 194, 133, 0.693);
+    border-color: rgba(64, 194, 133, 0.693);
+    border-left: 0;
+  }
+}

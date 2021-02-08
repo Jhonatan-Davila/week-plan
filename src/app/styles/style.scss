@@ -1,0 +1,9 @@
+@import '~react-widgets/dist/css/react-widgets.css';
+@import '~react-big-calendar/lib/css/react-big-calendar.css';
+
+.rbc-day-slot {
+  .rbc-event {
+    top: 58.501% !important;
+    min-height: 40px;
+  }
+}
