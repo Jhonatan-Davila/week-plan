@@ -1,16 +1,36 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 
 import PlanFilter from './PlanFilter';
 import PlanCalendar from './PlanCalendar';
 import {plans} from "../db/plans";
 
-const PlanView = () => {
-  const [calView, setCalView] = useState('week');
+const PlanView = ({open, width, slideSideNav}) => {
+  const [calView, setCalView] = useState('timeGridWorkWeek');
   const [calDate, setCalDate] = useState(new Date()); //init current date
-  const [planData, setPlanData] = useState(plans[0].plans);
+  const allPlans = useMemo(() => {
+    let results = []
+    plans.forEach((plan) => {
+      results.push(...plan.plans);
+    });
+    return results
+  }, []);
+  const [planData, setPlanData] = useState(allPlans);
 
   const handleCalendarView = useCallback((value) => {
-    setCalView(value);
+    switch(value) {
+      case 'day':
+        setCalView('timeGridDay');
+        break;
+      case 'work week':
+        setCalView('timeGridWorkWeek');
+        break;
+      case 'week':
+        setCalView('timeGridWeek');
+        break;
+      default:
+        setCalView('timeGridWorkWeek');
+        break;
+    }
   }, []);
 
   const handleCalendarDate = useCallback((value) => {
@@ -18,15 +38,23 @@ const PlanView = () => {
   }, []);
 
   const handleStaff = useCallback((id) => {
-    setPlanData(plans[id].plans);
+    id < 0 ?
+      setPlanData(allPlans) :
+      setPlanData(plans[id].plans);
   }, []);
 
   return (
-    <div className="plan-view">
+    <div 
+      className="plan-view"
+      style={{
+        marginLeft: !open ? 0 : width
+      }}
+    >
       <PlanFilter
         handleCalendarView={handleCalendarView}
         handleCalendarDate={handleCalendarDate}
-        handleStaff={handleStaff}/>
+        handleStaff={handleStaff}
+        slideSideNav={slideSideNav}/>
       <PlanCalendar
         calView={calView}
         calDate={calDate}

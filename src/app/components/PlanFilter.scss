@@ -1,11 +1,36 @@
 .plan-filter {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
   display: flex;
-  flex: 1;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px;
   font-size: 15px;
+  background-color: #002147;
+  .toggle-nav {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    &-slide {
+      font-size: 30px;
+      margin-left: 20px;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        color: green;
+      }
+    }
+  }
   .btn-appoint {
-    margin-left: 20px;
+    padding: 10px;
+    background-color: #ff3600;
+    color: white;
+    text-decoration: none;
+    border: none;
+  }
+  .plan-filter-option {
+    flex: 4;
   }
   &-option {
     display: flex;
@@ -19,4 +44,12 @@
       }
     }
   }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+  
 }

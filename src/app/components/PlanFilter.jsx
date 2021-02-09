@@ -13,8 +13,9 @@ const PlanFilter = ({
   handleCalendarView,
   handleCalendarDate,
   handleStaff,
+  slideSideNav
 }) => {
-  const calViews = useRef(['day', 'week', 'agenda']);
+  const calViews = useRef(['day', 'work week', 'week']);
   const staffNames = useMemo(() => {
     let results = [];
     staffs.forEach(staff => results.push(staff.name));
@@ -23,8 +24,16 @@ const PlanFilter = ({
 
   return (
     <div className="plan-filter">
-      <button className="btn-appoint">Create Appointment</button>
-      <div className="plan-filter-option">
+      <div className="toggle-nav">
+        <span 
+          className="toggle-nav-slide"
+          onClick={slideSideNav}
+        >&#9776;</span>
+      </div>
+      <div className="flex-center">
+        <button className="btn-appoint">Create Appointment</button>
+      </div>
+      <div className="flex-center plan-filter-option">
         <div className="plan-filter-option-item">
           <DropdownList
             data={staffNames}
@@ -43,7 +52,7 @@ const PlanFilter = ({
         <div className="plan-filter-option-item">
           <DropdownList
             data={calViews.current}
-            defaultValue={calViews.current[2]}  //init 'week'
+            defaultValue={calViews.current[1]}  //init 'work week'
             onChange={value => handleCalendarView(value)}
           />
         </div>

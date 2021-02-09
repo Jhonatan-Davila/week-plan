@@ -1,26 +1,88 @@
-import React, { useMemo } from "react";
-import BigCalendar from "react-big-calendar";
-import moment from 'moment';
+import React, { useState, useCallback, useMemo, useEffect, useRef } from "react";
+import FullCalendar, { formatDate } from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from "@fullcalendar/interaction";
 
-moment.locale("en");
-BigCalendar.momentLocalizer(moment);
+import './PlanView.scss';
+import PlanModal from "./PlanModal";
 
 const PlanCalendar = ({calView, calDate, planData}) => {
-  const allViews = useMemo(() => {
-    Object.keys(BigCalendar.Views).map(k => BigCalendar.Views[k]);
+  const [open, setOpen] = useState(false);
+  const [showEvents, setShowEvents] = useState([]);
+  const calendarRef = useRef(null);
+
+  const selectEvent = useCallback((event) => {
+    let arrEvent = [];
+    planData.forEach((plan) => {
+      const planStart = plan.start;
+      const eventStart = event.el.fcSeg.eventRange.range.start;
+
+      if( planStart.getFullYear() === eventStart.getFullYear() &&
+          planStart.getMonth() === eventStart.getMonth() &&
+          planStart.getDate() === eventStart.getDate() &&
+          (!event.el.fcSeg.start ||
+          (planStart.getHours() > 12 ? planStart.getHours() - 12 : planStart.getHours()) === parseInt(event.el.innerText.split(':')[0])))
+        arrEvent.push(plan);
+    })
+    setShowEvents(arrEvent);
+    setOpen(true);
+  }, [planData]);
+
+  const renderEventContent = useCallback((eventInfo) => {
+    return (
+      <>
+        <b>{eventInfo.timeText}</b>
+        <i>{eventInfo.event.title}</i>
+      </>
+    )
   }, []);
 
+  useEffect(() => {
+    const view = calView === 'timeGridWorkWeek' ? 'timeGridWeek' : calView;
+    calendarRef.current.getApi().changeView(view, calDate);
+  }, [calView, calDate]);
+
+  const  visibleWeekEnds = useMemo(() => {
+    return calView === 'timeGridWeek' ? true : false;
+  }, [calView]);
+
+  // const eventStyleGetter = (event, start, end, isSelected) => {
+  //   let backgroundColor = '#' + (event.hexColor ? event.hexColor : '3174ad');
+  //   let style = {
+  //       backgroundColor: backgroundColor,
+  //       borderRadius: '0px',
+  //       opacity: 0.8,
+  //       color: 'black',
+  //       border: '0px',
+  //       display: 'block'
+  //   };
+  //   return {
+  //     style: style
+  //   };
+  // };
+
   return (
-    <BigCalendar
-      toolbar={false}
-      events={planData}
-      step={60}
-      views={allViews}
-      view={calView}
-      onView={() => {}}
-      onNavigate={() => {}}
-      date={calDate}
-    />
+    <React.Fragment>
+      <FullCalendar
+        locale='en'
+        plugins={[ timeGridPlugin, interactionPlugin ]}
+        initialView='timeGridWeek'
+        events={planData}
+        headerToolbar={false}
+        weekends={visibleWeekEnds}
+        slotEventOverlap={false}
+        eventClick={selectEvent}
+        eventContent={renderEventContent}
+        expandRows={true}
+        contentHeight={2600}
+        ref={calendarRef}
+      />
+      <PlanModal 
+        open={open}
+        setOpen={setOpen}
+        events={showEvents}
+      />
+    </React.Fragment>
   );
 }
 
