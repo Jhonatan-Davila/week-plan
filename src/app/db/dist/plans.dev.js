@@ -122,15 +122,29 @@ var plans = [{
     title: "Duo Training",
     start: new Date(2021, 1, 9, 10, 0, 0),
     end: new Date(2021, 1, 9, 11, 30, 0)
+  }, {
+    id: 17,
+    title: "Duo Training",
+    start: new Date(2021, 1, 8, 8, 0, 0),
+    end: new Date(2021, 1, 8, 8, 5, 0)
+  }, {
+    id: 18,
+    title: "Duo Training",
+    start: new Date(2021, 1, 9, 10, 40, 0),
+    end: new Date(2021, 1, 9, 11, 10, 0)
+  }, {
+    id: 19,
+    title: "Duo Training",
+    start: new Date(2021, 1, 8, 6, 45, 0),
+    end: new Date(2021, 1, 8, 6, 50, 0)
+  }, {
+    id: 20,
+    title: "Duo Training",
+    start: new Date(2021, 1, 8, 7, 40, 0),
+    end: new Date(2021, 1, 8, 7, 45, 0)
   }]
 }, {
   plans: [{
-    id: 0,
-    title: "Duo Training",
-    allDay: true,
-    start: new Date(2021, 1, 9, 3, 45, 0),
-    end: new Date(2021, 1, 9, 5, 30, 0)
-  }, {
     id: 1,
     title: "Personal Training",
     start: new Date(2021, 1, 9, 10, 0, 0),

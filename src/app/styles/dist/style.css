@@ -7,6 +7,11 @@
   flex: 1;
 }
 
+.fc-event-main {
+  overflow: hidden;
+  min-height: 10px;
+}
+
 .plan-modal {
   position: fixed;
   top: 50%;
@@ -15,7 +20,7 @@
   border: 1px solid #ccc;
   background: #002147;
   color: white;
-  box-shadow: 3px 3px #566563;
+  box-shadow: 2px 2px #566563;
   overflow: auto;
   border-radius: 4px;
   outline: none;

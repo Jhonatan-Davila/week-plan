@@ -5,7 +5,7 @@ import PlanCalendar from './PlanCalendar';
 import {plans} from "../db/plans";
 
 const PlanView = ({open, width, slideSideNav}) => {
-  const [calView, setCalView] = useState('work_week');
+  const [calView, setCalView] = useState('timeGridWorkWeek');
   const [calDate, setCalDate] = useState(new Date()); //init current date
   const allPlans = useMemo(() => {
     let results = []
@@ -17,7 +17,20 @@ const PlanView = ({open, width, slideSideNav}) => {
   const [planData, setPlanData] = useState(allPlans);
 
   const handleCalendarView = useCallback((value) => {
-    setCalView(value);
+    switch(value) {
+      case 'day':
+        setCalView('timeGridDay');
+        break;
+      case 'work week':
+        setCalView('timeGridWorkWeek');
+        break;
+      case 'week':
+        setCalView('timeGridWeek');
+        break;
+      default:
+        setCalView('timeGridWorkWeek');
+        break;
+    }
   }, []);
 
   const handleCalendarDate = useCallback((value) => {
