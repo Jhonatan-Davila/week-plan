@@ -1,11 +1,10 @@
 @import '~react-widgets/dist/css/react-widgets.css';
 @import '~react-big-calendar/lib/css/react-big-calendar.css';
-
 .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1
+  flex: 1;
 }
 
 .plan-modal {
@@ -21,19 +20,19 @@
   border-radius: 4px;
   outline: none;
   padding: 10px;
-  .plan-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    li {
-      font-size: 20px;
-      margin: 5px;
-      display: flex;
-      .plan-title {
-        margin-left: 10px;
-      }
-    }
-  }
+}
+.plan-modal .plan-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.plan-modal .plan-list li {
+  font-size: 20px;
+  margin: 5px;
+  display: flex;
+}
+.plan-modal .plan-list li .plan-title {
+  margin-left: 10px;
 }
 
 .plan-overlay {

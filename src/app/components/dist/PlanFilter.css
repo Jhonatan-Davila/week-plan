@@ -1,0 +1,47 @@
+.plan-filter {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 15px;
+  background-color: #002147;
+}
+.plan-filter .toggle-nav {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.plan-filter .toggle-nav-slide {
+  font-size: 30px;
+  margin-left: 20px;
+  color: white;
+  cursor: pointer;
+}
+.plan-filter .toggle-nav-slide:hover {
+  color: green;
+}
+.plan-filter .btn-appoint {
+  padding: 10px;
+  background-color: #ff3600;
+  color: white;
+  text-decoration: none;
+  border: none;
+}
+.plan-filter .plan-filter-option {
+  flex: 4;
+}
+.plan-filter-option {
+  display: flex;
+  justify-content: center;
+  flex: 2;
+  margin-left: 20px;
+}
+.plan-filter-option-item {
+  margin-left: 20px;
+}
+.plan-filter-option-item:not(:nth-child(2)) {
+  width: 150px;
+}

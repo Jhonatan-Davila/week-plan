@@ -4,14 +4,14 @@ const SidebarContent = () => {
   return (
     <div className="content">
       <div className="container">
-        <label>Participant</label>
+        <label className="title">Participant</label>
         <div className="box-wrapper">
-          <input type="text" placeholder="Search"></input>
+          <input className="search-input" type="text" placeholder="Search"></input>
           <i className="fas fa-search"></i>
         </div>
       </div>
       <div className="container">
-        <label>Staff</label>
+        <label className="title">Staff</label>
         <div className="box-wrapper">
           <input type="checkbox" className="box"></input>
           <label className="box-label">Bairam Frootan</label>
@@ -38,7 +38,7 @@ const SidebarContent = () => {
         </div>
       </div>
       <div className="container">
-        <label>Activity</label>
+        <label className="title">Activity</label>
         <div className="box-wrapper">
           <input type="checkbox" className="box"></input>
           <label className="box-label">Duo Training</label>
