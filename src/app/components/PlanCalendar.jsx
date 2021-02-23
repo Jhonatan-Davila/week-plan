@@ -46,21 +46,6 @@ const PlanCalendar = ({calView, calDate, planData}) => {
     return calView === 'timeGridWeek' ? true : false;
   }, [calView]);
 
-  // const eventStyleGetter = (event, start, end, isSelected) => {
-  //   let backgroundColor = '#' + (event.hexColor ? event.hexColor : '3174ad');
-  //   let style = {
-  //       backgroundColor: backgroundColor,
-  //       borderRadius: '0px',
-  //       opacity: 0.8,
-  //       color: 'black',
-  //       border: '0px',
-  //       display: 'block'
-  //   };
-  //   return {
-  //     style: style
-  //   };
-  // };
-
   return (
     <React.Fragment>
       <FullCalendar
